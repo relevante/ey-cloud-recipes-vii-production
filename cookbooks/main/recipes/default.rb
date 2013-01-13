@@ -1,4 +1,6 @@
-require_recipe "emerge::imagemagick"
+if %w(app_master app solo).include?(node[:instance_role])
+  require_recipe "emerge::imagemagick"
+end
 
 #execute "testing" do
 #  command %Q{
