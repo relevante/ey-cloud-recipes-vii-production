@@ -2,6 +2,11 @@ if %w(app_master app solo).include?(node[:instance_role])
   require_recipe "emerge::imagemagick"
 end
 
+if %w(app_master app solo).include?(node[:instance_role])
+  require_recipe "elasticsearch::non_util"
+end
+
+
 #execute "testing" do
 #  command %Q{
 #    echo "i ran at #{Time.now}" >> /root/cheftime
