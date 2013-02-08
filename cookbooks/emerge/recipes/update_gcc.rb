@@ -16,10 +16,13 @@
 
 
 # Unmask
-message "enabling glibc 2.7-r2"
-
 enable_package "sys-libs/glibc" do
   version "2.7-r2"
+end
+
+package "sys-libs/glibc" do
+  version "2.7-r2"
+  action :install
 end
 
 enable_package "sys-devel/gcc" do
