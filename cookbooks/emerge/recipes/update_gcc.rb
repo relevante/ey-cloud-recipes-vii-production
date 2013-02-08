@@ -13,7 +13,13 @@
 # $ eix libxml2
 #############################################
 
+
+
 # Unmask
+enable_package "sys-libs/glibc" do
+  version "2.7-r2"
+end
+
 enable_package "sys-devel/gcc" do
   version "4.2.4"
 end
