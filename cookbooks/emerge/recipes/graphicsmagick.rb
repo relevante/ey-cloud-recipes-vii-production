@@ -13,6 +13,8 @@
 # $ eix libxml2
 #############################################
 
+require_recipe "emerge::update_gcc"
+
 # Unmask
 enable_package "media-gfx/graphicsmagick" do
   version "1.3.5"
