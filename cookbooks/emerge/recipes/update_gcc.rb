@@ -15,11 +15,11 @@
 
 # Unmask
 enable_package "sys-devel/gcc" do
-  version "4.3.2"
+  version "4.2.4"
 end
 
 # Install the newly unmasked version
 package "sys-devel/gcc" do
-  version "4.3.2"
+  version "4.2.4"
   action :install
 end
