@@ -1,9 +1,13 @@
 if %w(app_master app solo).include?(node[:instance_role])
   require_recipe "emerge::imagemagick"
-end
-
-if %w(app_master app solo).include?(node[:instance_role])
   require_recipe "elasticsearch::non_util"
+  
+  # docsplit dependencies
+  require_recipe "emerge::graphicsmagick"
+  require_recipe "emerge::poppler"
+  require_recipe "emerge::ghostscript"
+  require_recipe "emerge::tesseract"
+  ###
 end
 
 
