@@ -15,6 +15,10 @@
 
 require_recipe "emerge::update_gcc"
 
+package_use "media-gfx/graphicsmagick" do
+  flags "-imagemagick"
+end
+
 # Unmask
 enable_package "media-gfx/graphicsmagick" do
   version "1.3.5"
