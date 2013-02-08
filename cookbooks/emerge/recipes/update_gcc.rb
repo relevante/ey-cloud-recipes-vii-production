@@ -18,6 +18,7 @@
 # Unmask
 enable_package "sys-libs/glibc" do
   version "2.7-r2"
+  override_hardmask true
 end
 
 package "sys-libs/glibc" do
