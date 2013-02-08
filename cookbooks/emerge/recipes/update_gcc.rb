@@ -16,6 +16,8 @@
 
 
 # Unmask
+message "enabling glibc 2.7-r2"
+
 enable_package "sys-libs/glibc" do
   version "2.7-r2"
 end
