@@ -1,8 +1,9 @@
 if %w(app_master app solo).include?(node[:instance_role])
   require_recipe "emerge::imagemagick"
   require_recipe "elasticsearch::non_util"
-  Chef::Log.info "Requiring redis"
   require_recipe "redis::non_util"
+  require_recipe "sidekiq"
+  
   
   # docsplit dependencies
   require_recipe "emerge::graphicsmagick"
