@@ -11,6 +11,12 @@ if %w(app_master app solo).include?(node[:instance_role])
   require_recipe "emerge::ghostscript"
   require_recipe "emerge::tesseract"
   ###
+  
+  cron "cache_sweep" do
+    minute '*/15'
+    user 'deploy'
+    command "cd /data/#{appname}/current && rails runner -e production script/periodic_cache_sweep.rb"
+  end
 end
 
 
