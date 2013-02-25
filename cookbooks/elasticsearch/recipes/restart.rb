@@ -5,7 +5,7 @@ end
 node[:applications].each do |app_name, data|
   execute "restart-elasticsearch" do 
     command %Q{ 
-      echo "sudo monit -g elasticsearch restart all" | at now 
+      sudo monit -g elasticsearch restart all
     }
   end
 end
