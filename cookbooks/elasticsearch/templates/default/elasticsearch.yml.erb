@@ -12,12 +12,9 @@ discovery:
     minimum_master_nodes: 1
     ping.timeout: 3s
     ping.multicast.enabled: false
-    ping.unicast.hosts: ["<%= @elasticsearch_instances %>"]
+    ping.unicast.hosts: ["<%= @elasticsearch_instances * ',' %>"]
 
 gateway:
   recover_after_nodes: 1
   recover_after_time: 5m
-  expected_nodes: <%= @elasticsearch_expected %>
-
-
-<%= @node.to_yaml %>
+  expected_nodes: <%= @elasticsearch_instances.length %>

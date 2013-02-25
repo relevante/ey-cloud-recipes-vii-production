@@ -13,7 +13,10 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     not_if { File.exists?("/tmp/elasticsearch-#{node[:elasticsearch_version]}.zip") }
   end
   
-  elasticsearch_instances = "123,456"
+  elasticsearch_instances = []
+  node['attribute']['engineyard']['environment']['instances'].each do |instance|
+    elasticsearch_instances << instance['private_hostname']
+  end
 
   user "elasticsearch" do
     uid 61021
