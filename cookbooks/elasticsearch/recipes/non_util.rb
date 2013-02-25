@@ -105,7 +105,7 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     group "nogroup"
     variables({
       :elasticsearch_instances => elasticsearch_instances,
-      :elasticsearch_defaultreplicas => node[:elasticsearch_defaultreplicas],
+      :elasticsearch_defaultreplicas => elasticsearch_instances.length - 1,
       :elasticsearch_defaultshards => node[:elasticsearch_defaultshards],
       :elasticsearch_clustername => node[:elasticsearch_clustername]
     })
