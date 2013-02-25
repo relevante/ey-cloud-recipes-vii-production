@@ -105,7 +105,9 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     group "nogroup"
     variables({
       :elasticsearch_instances => elasticsearch_instances,
-      :elasticsearch_clustername => @elasticsearch_clustername
+      :elasticsearch_defaultreplicas => node[:elasticsearch_defaultreplicas],
+      :elasticsearch_defaultshards => node[:elasticsearch_defaultshards],
+      :elasticsearch_clustername => node[:elasticsearch_clustername]
     })
     mode 0600
     backup 0
