@@ -2,11 +2,7 @@ execute "ensure-elasticsearch-is-setup-with-monit" do
   command "/usr/bin/monit reload"
 end
 
-
-execute "monit -g elasticsearch restart all" do
-  action :run
-end
-
-execute "ensure-elasticsearch-is-setup-with-monit" do 
-  command "/usr/bin/monit reload"
+execute "restart-elasticsearch" do 
+  user "root"
+  command "/usr/bin/monit -g elasticsearch restart all"
 end
