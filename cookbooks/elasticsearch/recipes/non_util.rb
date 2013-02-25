@@ -12,6 +12,8 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     # checksum node[:elasticsearch_checksum]
     not_if { File.exists?("/tmp/elasticsearch-#{node[:elasticsearch_version]}.zip") }
   end
+  
+  elasticsearch_instances = "123,456"
 
   user "elasticsearch" do
     uid 61021
