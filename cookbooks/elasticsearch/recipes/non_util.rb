@@ -13,13 +13,13 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     not_if { File.exists?("/tmp/elasticsearch-#{node[:elasticsearch_version]}.zip") }
   end
   
-  elasticsearch_instances = []
+  @elasticsearch_instances = []
   attribute = node['attribute']
   engineyard = node['engineyard']
   environment = engineyard['environment']
   instances = environment['instances']
   instances.each do |instance|
-    elasticsearch_instances << instance['private_hostname']
+    @elasticsearch_instances << instance['private_hostname']
   end
 
   user "elasticsearch" do
