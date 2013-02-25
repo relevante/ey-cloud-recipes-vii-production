@@ -3,8 +3,8 @@ execute "ensure-elasticsearch-is-setup-with-monit" do
 end
 
 execute "restart-elasticsearch" do 
-  user "deploy"
-  command "sudo monit -g elasticsearch restart all"
+  user "root"
+  command "monit -g elasticsearch restart all"
 end
 
 execute "ensure-elasticsearch-is-setup-with-monit" do 
