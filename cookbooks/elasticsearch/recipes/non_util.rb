@@ -128,10 +128,12 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     mode 0644
   end
 
+
+  require_recipe "elasticsearch::restart"
   # Tell monit to just reload, if elasticsearch is not running start it.  If it is monit will do nothing.
-  execute "monit reload" do
-    command "monit reload"
-  end
+  # execute "monit reload" do
+  #   command "monit reload"
+  # end
 end
 
 solo = node[:instance_role] == 'solo'
