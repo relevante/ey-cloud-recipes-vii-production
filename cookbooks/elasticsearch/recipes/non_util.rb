@@ -15,7 +15,7 @@ if ['solo','app_master','app'].include?(node[:instance_role])
   
   elasticsearch_instances = []
   attribute = node['attribute']
-  engineyard = attribute['engineyard']
+  engineyard = node['engineyard']
   environment = engineyard['environment']
   instances = environment['instances']
   instances.each do |instance|
