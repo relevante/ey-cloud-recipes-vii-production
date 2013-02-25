@@ -89,6 +89,18 @@ if ['solo','app_master','app'].include?(node[:instance_role])
     source "logging.yml.erb"
     mode 0644
   end
+  
+  template "/usr/lib/elasticsearch-#{node[:elasticsearch_version]}/config/elasticsearch.yml" do
+    source "elasticsearch.yml.erb"
+    owner "elasticsearch"
+    group "nogroup"
+    variables(
+
+    )
+    mode 0600
+    backup 0
+  end
+
 
   directory "/usr/share/elasticsearch" do
     group "elasticsearch"
