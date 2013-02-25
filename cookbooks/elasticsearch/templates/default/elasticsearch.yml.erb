@@ -18,3 +18,7 @@ gateway:
   recover_after_nodes: 1
   recover_after_time: 5m
   expected_nodes: <%= @elasticsearch_instances.length %>
+
+index:
+	number_of_replicas: <%= @elasticsearch_defaultreplicas %>
+	number_of_shards: <%= @elasticsearch_defaultshards %>	
