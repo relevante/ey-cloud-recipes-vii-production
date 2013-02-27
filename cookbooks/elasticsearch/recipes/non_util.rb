@@ -14,11 +14,7 @@ if ['solo','app_master','app'].include?(node[:instance_role])
   end
   
   elasticsearch_instances = []
-  attribute = node['attribute']
-  engineyard = node['engineyard']
-  environment = engineyard['environment']
-  instances = environment['instances']
-  instances.each do |instance|
+  node['engineyard']['environment']['instances'].each do |instance|
     elasticsearch_instances << instance['private_hostname']
   end
 

@@ -26,13 +26,38 @@ if %w(app_master app solo).include?(node[:instance_role])
       variables(
       )
       mode 0644
+      backup 0
     end
+    
+    template "/data/nginx/servers/VisionImpactInstitute/custom.ssl.conf" do
+      source "nginx.custom.ssl.conf.erb"
+      variables(
+      )
+      mode 0644
+      backup 0
+    end
+
     
     execute "restart nginx" do
       user 'root'
       command "/etc/init.d/nginx restart"
     end
 
+    other_instances = []
+    node['engineyard']['environment']['instances'].each do |instance|
+      next unless %w(app app_master).index(instance['role'])
+      next if instance['private_hostname'] == node['fqdn']
+      other_instances << instance['private_hostname']
+    end
+    
+    template "/data/VisionImpactInstitute/shared/config/cluster.yml" do
+      source 'cluster.yml.erb'
+      variables(
+        :other_instances => other_instances
+      )
+      mode 0644
+      backup 0
+    end
   end
 end
 
