@@ -19,6 +19,14 @@ if %w(app_master app solo).include?(node[:instance_role])
       command "cd /data/#{app_name}/current && bundle exec rails runner -e production script/periodic_cache_sweep.rb"
     end
   end
+  
+  template "/data/nginx/servers/VisionImpactInstitute/custom.conf" do
+    source "nginx.custom.conf.erb"
+    variables(
+    )
+    mode 0644
+  end
+
 end
 
 
