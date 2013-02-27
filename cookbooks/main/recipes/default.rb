@@ -27,6 +27,12 @@ if %w(app_master app solo).include?(node[:instance_role])
       )
       mode 0644
     end
+    
+    execute "restart nginx" do
+      user 'root'
+      command "/etc/init.d/nginx restart"
+    end
+
   end
 end
 
