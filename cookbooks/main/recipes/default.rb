@@ -20,7 +20,7 @@ if %w(app_master app solo).include?(node[:instance_role])
     end
   end
   
-  if node[:environment][:framework_env]
+  if node[:environment][:framework_env] == 'production'
     template "/data/nginx/servers/VisionImpactInstitute/custom.conf" do
       source "nginx.custom.conf.erb"
       variables(
