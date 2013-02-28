@@ -37,6 +37,14 @@ if %w(app_master app solo).include?(node[:instance_role])
       backup 0
     end
 
+    template "/data/nginx/servers/VisionImpactInstitute.ssl.conf" do
+      source "nginx.VisionImpactInstitute.ssl.conf.erb"
+      variables(
+      )
+      mode 0644
+      backup 0
+    end
+
     
     execute "restart nginx" do
       user 'root'

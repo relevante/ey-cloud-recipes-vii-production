@@ -1,3 +1,1 @@
-if ($scheme = http) {
-	return 301 https://visionimpactinstitute.org$request_uri;
-}
+rewrite ^ https://visionimpactinstitute.org$1 permanent;
